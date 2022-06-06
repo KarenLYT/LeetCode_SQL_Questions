@@ -32,5 +32,11 @@ Output:
 +-------------+-------------+
 Explanation: The only pair is (1, 1) where they cooperated exactly 3 times.
 
-
+-----------------------------------------------------------------------------
 SOLUTION: 
+
+SELECT actor_id, director_id
+  FROM ActorDirector
+ GROUP BY 1,2
+HAVING count(actor_id) >= 3
+   AND count(director_id) >= 3
