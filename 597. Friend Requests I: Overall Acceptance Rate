@@ -71,7 +71,6 @@ There are 4 unique accepted requests, and there are 5 requests in total. So the 
 _____________________________
 
 SOLUTION:
-
 with t1 as
 (
     SELECT DISTINCT sender_id, send_to_id
@@ -84,5 +83,4 @@ with t1 as
 )
 SELECT 
 ifnull((SELECT DISTINCT ROUND((SELECT count(*) FROM t2) / (SELECT count(*) FROM t1),2) 
-  FROM t1, t2),0) 'accept_rate'
-
+  FROM t1, t2),0) AS accept_rate
