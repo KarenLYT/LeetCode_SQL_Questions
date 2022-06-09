@@ -1,1 +1,1 @@
-# LeetCode_SQL_Questions
+# LeetCode_SQL_Questions - Easy
