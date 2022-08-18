@@ -57,3 +57,13 @@ SELECT user_id, max(time_stamp) AS last_stamp
   FROM logins 
  WHERE LEFT(time_stamp,4) = '2020'
  GROUP BY user_id
+ 
+OR use window function:
+
+SELECT t.user_id, t.time_stamp AS last_stamp
+  FROM (
+SELECT user_id, time_stamp,
+       RANK() OVER (PARTITION BY user_id ORDER BY time_stamp DESC) AS rk
+  FROM logins
+  WHERE LEFT(time_stamp, 4) = '2020') t
+  WHERE rk = 1
